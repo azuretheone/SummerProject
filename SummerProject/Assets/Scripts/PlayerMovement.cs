@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour {
 // Stores vertical movement value
         movement.y = Input.GetAxisRaw("Vertical");
 // If LShift is pressed, enable isRunning
-        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+        if (Input.GetKey(KeyCode.LeftShift)) {
             isRunning = true;
         }
 // If LShift is released, disable isRunning 
@@ -29,9 +29,9 @@ public class PlayerMovement : MonoBehaviour {
             isRunning = false;
         }
 // If Control or C is pressed, enable isCrouching
-        if (Input.GetKeyDown(KeyCode.LeftControl)) {
+        if (Input.GetKey(KeyCode.LeftControl)) {
             isCrouching = true;
-        } else if (Input.GetKeyDown(KeyCode.C)) {
+        } else if (Input.GetKey(KeyCode.C)) {
             isCrouching = true;
         }
 // If Control or C is released, disable isCrouching
@@ -41,10 +41,10 @@ public class PlayerMovement : MonoBehaviour {
     }
 // Takes position of Player, normalizes the direction of movement, multiplies the direction by movement speed, then multiplies by Time
     void FixedUpdate() {
-        if (isRunning = true) {
+        if (isRunning == true) {
             rb.MovePosition(rb.position + movement.normalized * runSpeed * Time.fixedDeltaTime);
         }
-        else if (isCrouching = true) {
+        else if (isCrouching == true) {
             rb.MovePosition(rb.position + movement.normalized * crouchSpeed * Time.fixedDeltaTime);
         }
         else {
